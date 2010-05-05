@@ -16,7 +16,7 @@ int main(int argc, char *argv[]) {
   // On remplace notre programme par la commande ls
   execlp("ls","ls",(char *) NULL);
 
-  // En cas de succèe ce code n'est pas executé
+  // En cas de succè ce code n'est pas executé
   // On est donc en présence d'une erreur
   perror("Impossible de lancer la commande : ls");
 
