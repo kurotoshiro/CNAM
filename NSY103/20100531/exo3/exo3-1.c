@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) {
   }
 
   // Le fichier dest est le dernier de la liste
-  fd_out=open(argv[argc-1],O_WRONLY|O_CREAT|O_TRUNC);
+  fd_out=open(argv[argc-1],O_WRONLY|O_CREAT|O_TRUNC,S_IRWXU|S_IRGRP|S_IROTH);
 
   // Tout sauf le dernier fichier
   for(i=1;i<argc-1;i++) {

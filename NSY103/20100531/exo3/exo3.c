@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
   }
 
   fd_in=open(argv[1],O_RDONLY);
-  fd_out=open(argv[2],O_WRONLY|O_CREAT|O_TRUNC);
+  fd_out=open(argv[2],O_WRONLY|O_CREAT|O_TRUNC,S_IRWXU|S_IRGRP|S_IROTH);
   if(fd_in==-1 || fd_out==-1) {
     perror("Impossible d'ouvrir le fichier source ou destination.\n");
     return EXIT_FAILURE;
