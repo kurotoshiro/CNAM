@@ -3,3 +3,11 @@ h1. NSY103 - Linux et programmation système
 h2. 12/04/2010 - Le _Fork_
 
 h2. 03/05/2010 - _Exec_
+
+h2. 31/05/2010 - open(), read() et write()
+
+h3. exo2
+Faire un clone simplifié de la commande cat
+
+h3. exo3
+Faire un clone simplifié de la commande cp
