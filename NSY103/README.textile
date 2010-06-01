@@ -6,6 +6,30 @@ h2. 03/05/2010 - _Exec_
 
 h2. 31/05/2010 - open(), read() et write()
 
+h3. fonctions vues
+
+h4. dup()
+
+dup() permet de cloner un file descriptor.
+On se sert notamment de cette fonction pour faire de redirection.
+
+exemple :
+
+Pour rediriger la sortie de 'ls' dans "toto"
+
+  * 0 - STDIN
+  * 1 - STDOUT
+  * 2 - STDERR
+  * 3 - "toto" // fd=open("toto",....
+
+close(1);   // On ferme STDOUT 
+dup(3);     // On clone fd, le système donne le premier fd libre (ici 1)
+close(3);   // On ferme fd, inutile maintenant
+execlp("ls","ls",NULL);
+
+Note : voir dup2(), qui fait automatiquement l'enchainement close puis dup
+(mais nécessite toujours le close explicite)
+
 h3. exo1
 
 Faire un clone simplifié de la commande cat
@@ -13,6 +37,7 @@ Faire un clone simplifié de la commande cat
 h3. exo2
 
 Faire un clone simplifié de la commande cp
+
 
 h2. Bonus
 
