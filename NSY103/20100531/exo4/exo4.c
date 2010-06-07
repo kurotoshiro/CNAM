@@ -10,7 +10,6 @@
 int main(int argc, char *argv[]) {
 
   int fd;
-  int i;
   int ret;
   pid_t pid;
 
