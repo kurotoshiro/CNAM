@@ -30,6 +30,8 @@ int main(int argc, char *argv[]) {
 
     // Ferme stdout et utilise 
     dup2(fd,1);
+    dup2(fd,2);
+    close(fd);
 
     // argv+1 ne decale pas la fin de argv, uniquement l'adresse de debut
     execvp(argv[1],argv + 1);
@@ -37,7 +39,7 @@ int main(int argc, char *argv[]) {
   }
 
   wait(&ret);
-  printf("%d\n",WEXITSTATUS(ret));
+  //printf("%d\n",WEXITSTATUS(ret));
   if(WEXITSTATUS(ret)) {
     printf("ERREUR\n");
   }
