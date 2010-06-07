@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
       return EXIT_FAILURE;
     }
 
-    //dup2(3,1);
+    dup2(3,1);
 
     execvp(argv[1],argv + 1);
     return EXIT_FAILURE;
