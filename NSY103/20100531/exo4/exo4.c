@@ -12,12 +12,16 @@ int main(int argc, char *argv[]) {
   int fd;
   int i;
   int ret;
-  char arg[argc];
+  char *arg[argc];
   pid_t pid;
 
   if(argc<2) {
     perror("Vous devez donner un programme en argument.");
     return EXIT_FAILURE;
+  }
+
+  for(i=1;i<argc;i++){
+    arg[i-1]=argv[i];
   }
 
   pid=fork();
@@ -29,9 +33,9 @@ int main(int argc, char *argv[]) {
       return EXIT_FAILURE;
     }
 
-    dup2(3,1);
+    //dup2(3,1);
 
-    execlp(argv[1],argv[2],NULL);
+    execvp(argv[1],argv + 1);
     return EXIT_FAILURE;
   }
 
