@@ -21,6 +21,10 @@ int main(int argc, char *argv[]) {
 
   pid=fork();
 
+  if(pid==-1) {
+    perror("Impossible de créer un processus fils.");
+    return EXIT_FAILURE;
+  }
   if(pid==0) {
     fd=open("/dev/null",O_WRONLY);
     if(fd==-1) {
@@ -35,6 +39,7 @@ int main(int argc, char *argv[]) {
 
     // argv+1 ne decale pas la fin de argv, uniquement l'adresse de debut
     execvp(argv[1],argv + 1);
+    perror("Le programme n'existe pas.");
     return EXIT_FAILURE;
   }
 
