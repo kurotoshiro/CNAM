@@ -28,7 +28,8 @@ int main(int argc, char *argv[]) {
       return EXIT_FAILURE;
     }
 
-    dup2(3,1);
+    // Ferme stdout et utilise 
+    dup2(fd,1);
 
     // argv+1 ne decale pas la fin de argv, uniquement l'adresse de debut
     execvp(argv[1],argv + 1);
