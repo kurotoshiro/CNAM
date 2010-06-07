@@ -12,16 +12,11 @@ int main(int argc, char *argv[]) {
   int fd;
   int i;
   int ret;
-  char *arg[argc];
   pid_t pid;
 
   if(argc<2) {
     perror("Vous devez donner un programme en argument.");
     return EXIT_FAILURE;
-  }
-
-  for(i=1;i<argc;i++){
-    arg[i-1]=argv[i];
   }
 
   pid=fork();
@@ -35,6 +30,7 @@ int main(int argc, char *argv[]) {
 
     dup2(3,1);
 
+    // argv+1 ne decale pas la fin de argv, uniquement l'adresse de debut
     execvp(argv[1],argv + 1);
     return EXIT_FAILURE;
   }
